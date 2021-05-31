@@ -1,8 +1,8 @@
 package main
 
 import (
+	"github.com/burhon94/fileX/cmd/fileX/router"
 	"net"
-	"net/http"
 )
 
 func main() {
@@ -13,14 +13,5 @@ func main() {
 	)
 	addr := net.JoinHostPort(host, port)
 
-	mux := http.NewServeMux()
-
-	mux.HandleFunc("/ping", PingHandler)
-
-	panic(http.ListenAndServe(addr, mux))
-}
-
-func PingHandler(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("pong"))
-	w.WriteHeader(200)
+	router.InitRoute(addr)
 }
