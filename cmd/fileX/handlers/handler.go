@@ -3,7 +3,7 @@ package handlers
 import (
 	"github.com/burhon94/fileX/internals/health"
 	"github.com/burhon94/fileX/internals/structs"
-	"github.com/burhon94/fileX/reply"
+	"github.com/burhon94/fileX/pkg/reply"
 	"net/http"
 )
 
@@ -12,7 +12,7 @@ func PingHandler(w http.ResponseWriter, r *http.Request) {
 
 	key := r.Header.Get("key")
 
-	defer reply.Json(w, resp)
+	defer reply.Json(w, &resp)
 
 	resp = health.Pong(key)
 }

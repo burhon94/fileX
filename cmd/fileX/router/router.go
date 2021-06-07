@@ -2,13 +2,16 @@ package router
 
 import (
 	"github.com/burhon94/fileX/cmd/fileX/handlers"
+	newRouter "github.com/burhon94/fileX/pkg/router"
 	"net/http"
 )
 
 func InitRoute(addr string) {
-	mux := http.NewServeMux()
+	router := newRouter.NewRouter()
 
-	mux.HandleFunc("/ping", handlers.PingHandler)
+	router.GET("/ping", handlers.PingHandler)
 
-	panic(http.ListenAndServe(addr, mux))
+	server := http.Server{Addr: addr, Handler: router.GetServeHTTP()}
+
+	panic(server.ListenAndServe())
 }

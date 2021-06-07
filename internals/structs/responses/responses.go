@@ -9,9 +9,11 @@ func newResponse(code int, message string) structs.Response {
 const (
 	OkCode  = 200
 	BadCode = 400
+	InternalCode = 500
 )
 
 var (
 	Success    = newResponse(OkCode, "Success")
 	BadRequest = newResponse(BadCode, "BadRequest")
+	InternalErr = newResponse(InternalCode, "Internal Error")
 )
