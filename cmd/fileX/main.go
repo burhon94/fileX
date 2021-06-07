@@ -1,7 +1,17 @@
 package main
 
-import "fmt"
+import (
+	"github.com/burhon94/fileX/cmd/fileX/router"
+	"net"
+)
 
 func main() {
-	fmt.Println("Hello, world!")
+
+	var (
+		host = "0.0.0.0"
+		port = "9999"
+	)
+	addr := net.JoinHostPort(host, port)
+
+	router.InitRoute(addr)
 }
