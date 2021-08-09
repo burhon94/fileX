@@ -1,0 +1,68 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "file-X Project API",
+        "contact": {},
+        "version": "0.0.2"
+    },
+    "host": "localhost:9999",
+    "basePath": "/",
+    "paths": {
+        "/ping": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Ping Service"
+                ],
+                "summary": "check service status",
+                "operationId": "ping",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "key Request",
+                        "name": "key",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/structs.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Неверные данные",
+                        "schema": {
+                            "$ref": "#/definitions/structs.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Внутренняя ошибка сервера",
+                        "schema": {
+                            "$ref": "#/definitions/structs.Response"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "structs.Response": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "payload": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
