@@ -23,6 +23,7 @@ type Router interface {
 	PUT(pattern string, handler http.HandlerFunc, mw ...Mw)
 	DELETE(pattern string, handler http.HandlerFunc, mw ...Mw)
 
+	PathPrefix(pattern string) *mux.Route
 	GetServeHTTP() http.HandlerFunc
 }
 
@@ -80,6 +81,10 @@ func (r *HttpRouter) PUT(pattern string, handler http.HandlerFunc, mw ...Mw) {
 
 func (r *HttpRouter) DELETE(pattern string, handler http.HandlerFunc, mw ...Mw) {
 	r.Handle("DELETE", pattern, handler, mw...)
+}
+
+func (r *HttpRouter) PathPrefix(pattern string) *mux.Route {
+	return r.router.NewRoute().PathPrefix(pattern)
 }
 
 func (r *HttpRouter) GetServeHTTP() http.HandlerFunc {
