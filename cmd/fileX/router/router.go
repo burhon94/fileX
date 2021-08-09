@@ -1,8 +1,8 @@
 package router
 
 import (
+	_ "github.com/burhon94/fileX/cmd/fileX/docs"
 	"github.com/burhon94/fileX/cmd/fileX/handlers"
-	_ "github.com/burhon94/fileX/docs"
 	newRouter "github.com/burhon94/fileX/pkg/router"
 	httpSwagger "github.com/swaggo/http-swagger"
 	"net/http"
